@@ -1,4 +1,3 @@
-"use client";
 import { useEffect, useRef, useState } from "react";
 import { useEditor } from "@tiptap/react";
 import { convertToLatex } from "@/lib/latex-converter";
@@ -13,7 +12,7 @@ interface AutoSaveOptions {
 export const useAutoSave = ({ editor, documentId, delay = 2000 }: AutoSaveOptions) => {
   const [isSaving, setIsSaving] = useState(false);
   const [lastSaved, setLastSaved] = useState<Date | null>(null);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const timeoutRef = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
     if (!editor) return;

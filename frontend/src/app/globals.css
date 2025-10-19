@@ -1,0 +1,144 @@
+/* src/app/globals.css */
+
+/* Tailwind v4 entry */
+@import "tailwindcss";
+
+/* ---------- Base tokens & element defaults ---------- */
+@layer base {
+  /* Design tokens (HSL) */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    --primary: 231 48% 48%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 214 32% 91%;
+    --secondary-foreground: 215 25% 15%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 231 48% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 231 48% 48%;
+
+    --radius: 0.5rem;
+
+    /* Editor-specific tokens */
+    --editor-bg: 0 0% 100%;
+    --editor-toolbar-bg: 0 0% 98%;
+    --editor-sidebar-bg: 0 0% 98%;
+    --editor-border: 214 32% 91%;
+
+    /* Status colors */
+    --status-success: 142 71% 45%;
+    --status-warning: 38 92% 50%;
+    --status-info: 199 89% 48%;
+
+    /* Sidebar tokens */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 215 25% 15%;
+    --sidebar-primary: 231 48% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 215 25% 15%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 231 48% 48%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 231 58% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 231 58% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 231 58% 58%;
+
+    --editor-bg: 222 47% 11%;
+    --editor-toolbar-bg: 217 33% 17%;
+    --editor-sidebar-bg: 217 33% 17%;
+    --editor-border: 217 33% 17%;
+
+    --status-success: 142 71% 45%;
+    --status-warning: 38 92% 50%;
+    --status-info: 199 89% 48%;
+
+    --sidebar-background: 217 33% 17%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 231 58% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 47% 11%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-ring: 231 58% 58%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+/* ---------- Component-level utilities ---------- */
+@layer components {
+  /* Example utility via @apply */
+  .h1 {
+    @apply text-4xl font-bold leading-tight;
+  }
+
+  /* TipTap prose styling */
+  .prose-editor h1 { @apply text-4xl font-bold mb-4 mt-8; }
+  .prose-editor h2 { @apply text-3xl font-bold mb-3 mt-6; }
+  .prose-editor h3 { @apply text-2xl font-semibold mb-2 mt-4; }
+  .prose-editor p { @apply mb-4; }
+  .prose-editor ul,
+  .prose-editor ol { @apply mb-4 pl-6; }
+  .prose-editor ul { @apply list-disc; }
+  .prose-editor ol { @apply list-decimal; }
+  .prose-editor li { @apply mb-1; }
+  .prose-editor blockquote { @apply border-l-4 border-primary pl-4 italic my-4; }
+  .prose-editor code { @apply bg-muted px-1.5 py-0.5 rounded text-sm; }
+  .prose-editor a { @apply text-primary underline cursor-pointer; }
+  .prose-editor .ProseMirror-focused { @apply outline-none; }
+  .prose-editor .is-empty::before {
+    content: attr(data-placeholder);
+    @apply text-muted-foreground float-left h-0 pointer-events-none;
+  }
+}

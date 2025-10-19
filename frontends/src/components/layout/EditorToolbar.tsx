@@ -1,5 +1,3 @@
-"use client";
-
 import { 
   Bold, Italic, Underline, Link as LinkIcon, Code, AlignLeft, AlignCenter, AlignRight,
   List, ListOrdered, Image, Table, Plus, Quote

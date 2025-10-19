@@ -17,7 +17,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Projects />} />
-          <Route path="/doc/:id" element={<Editor />} />
+          <Route path="/document/:id" element={<Editor />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -25,5 +25,7 @@ const App = () => (
     </TooltipProvider>
   </QueryClientProvider>
 );
+throw new Error("HMR test — this should crash the page");
+
 
 export default App;
