@@ -3,9 +3,49 @@
 /* Tailwind v4 entry */
 @import "tailwindcss";
 
+/* v4 token mapping — MUST be top-level (not inside @layer) */
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  /* Optional: sidebar tokens as Tailwind colors */
+  --color-sidebar-background: hsl(var(--sidebar-background));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+}
+
 /* ---------- Base tokens & element defaults ---------- */
 @layer base {
-  /* Design tokens (HSL) */
   :root {
     --background: 0 0% 100%;
     --foreground: 215 25% 15%;
@@ -107,23 +147,14 @@
     --sidebar-ring: 231 58% 58%;
   }
 
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground antialiased;
-  }
+  /* sensible defaults */
+  *, ::before, ::after { border-color: hsl(var(--border)); }
+  body { @apply bg-background text-foreground antialiased; }
 }
 
 /* ---------- Component-level utilities ---------- */
 @layer components {
-  /* Example utility via @apply */
-  .h1 {
-    @apply text-4xl font-bold leading-tight;
-  }
-
-  /* TipTap prose styling */
+  /* TipTap Prose Styling */
   .prose-editor h1 { @apply text-4xl font-bold mb-4 mt-8; }
   .prose-editor h2 { @apply text-3xl font-bold mb-3 mt-6; }
   .prose-editor h3 { @apply text-2xl font-semibold mb-2 mt-4; }
@@ -142,3 +173,13 @@
     @apply text-muted-foreground float-left h-0 pointer-events-none;
   }
 }
+
+/* (Optional) Legacy Vite demo styles — Next doesn’t use #root, but keep if you still need them on a demo page. */
+#root { max-width: 1280px; margin: 0 auto; padding: 2rem; text-align: center; }
+.logo { height: 6em; padding: 1.5em; will-change: filter; transition: filter 300ms; }
+.logo:hover { filter: drop-shadow(0 0 2em #646cffaa); }
+.logo.react:hover { filter: drop-shadow(0 0 2em #61dafbaa); }
+@keyframes logo-spin { from { transform: rotate(0deg);} to { transform: rotate(360deg);} }
+@media (prefers-reduced-motion: no-preference) { a:nth-of-type(2) .logo { animation: logo-spin infinite 20s linear; } }
+.card { padding: 2em; }
+.read-the-docs { color: #888; }

@@ -60,7 +60,7 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {mockProjects.map((project) => (
-            <Link key={project.id} href={`/doc/${project.id}`}>
+            <Link key={project.id} href={`/editor/${project.id}`}>
               <Card className="p-6 hover:shadow-lg transition-shadow cursor-pointer border-2 hover:border-primary/50">
                 <div className="flex items-start gap-3 mb-4">
                   <div className="p-2 rounded-lg bg-primary/10">
