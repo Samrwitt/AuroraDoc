@@ -8,6 +8,7 @@ export const convertToLatex = (html: string): string => {
   const parser = new DOMParser();
   const doc = parser.parseFromString(html, 'text/html');
   
+
   // Add document preamble
   latex += "\\documentclass[12pt]{article}\n";
   latex += "\\usepackage[utf8]{inputenc}\n";
@@ -87,6 +88,8 @@ export const convertToLatex = (html: string): string => {
     return result;
   };
   
+  
+
   const processChildren = (element: Element): string => {
     let result = "";
     element.childNodes.forEach(child => {
@@ -114,7 +117,7 @@ const escapeLatex = (text: string): string => {
 };
 
 /**
- * Download LaTeX content as a .tex file
+ * Latex content into 
  */
 export const downloadLatex = (latex: string, filename: string = "document.tex") => {
   const blob = new Blob([latex], { type: "text/plain" });
