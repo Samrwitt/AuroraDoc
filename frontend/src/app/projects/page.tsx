@@ -54,7 +54,7 @@ const Projects = () => {
 
       <main className="max-w-7xl mx-auto px-6 py-12">
         <div className="mb-8">
-          <h2 className="text-3xl font-bold mb-2">Your Documents</h2>
+          <h2 className="text-3xl font-bold mb-2">Your Papers</h2>
           <p className="text-muted-foreground">Continue working on your research papers and articles</p>
         </div>
 
