@@ -14,7 +14,7 @@ services:
 
   postgres:
     image: postgres:16-alpine
-    environment:http://localhost:3000
+    environment:
       POSTGRES_DB: aurora_auth
       POSTGRES_USER: aurora
       POSTGRES_PASSWORD: aurora
