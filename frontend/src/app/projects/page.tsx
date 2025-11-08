@@ -22,7 +22,7 @@ const mockProjects: Project[] = [
   },
   {
     id: "2",
-    title: "Machine Learning Survey Paper",
+    title: "Machine Learning Survey report",
     lastEdited: "1 day ago",
     collaborators: ["JD"],
     wordCount: 3421,
@@ -31,7 +31,7 @@ const mockProjects: Project[] = [
     id: "3",
     title: "PhD Thesis Draft",
     lastEdited: "3 days ago",
-    collaborators: ["JD", "MS", "AK"],
+    collaborators: ["JD", "MS" ],
     wordCount: 12543,
   },
 ];
@@ -54,7 +54,7 @@ const Projects = () => {
 
       <main className="max-w-7xl mx-auto px-6 py-12">
         <div className="mb-8">
-          <h2 className="text-3xl font-bold mb-2">Your Documents</h2>
+          <h2 className="text-3xl font-bold mb-2">Your Papers</h2>
           <p className="text-muted-foreground">Continue working on your research papers and articles</p>
         </div>
 
