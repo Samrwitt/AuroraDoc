@@ -1,15 +1,79 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// prisma/schema.prisma
 
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String  @id @default(uuid())
+  email     String  @unique
+  name      String?
+  avatarUrl String?
+
+  identities Identity[]
+  sessions   Session[]
+  roles      Role[]
+  audits     Audit[] // one-to-many
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Identity {
+  id              String    @id @default(uuid())
+  userId          String
+  provider        String // "google" | "github"
+  providerUserId  String
+  accessTokenEnc  String
+  refreshTokenEnc String?
+  scope           String?
+  expiresAt       DateTime?
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([provider, providerUserId])
+  @@index([userId])
+}
+
+model Session {
+  id        String    @id @default(uuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userAgent String?
+  ip        String?
+  revokedAt DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([userId])
+}
+
+model Role {
+  id     String @id @default(uuid())
+  userId String
+  role   String // "OWNER" | "EDITOR" | "VIEWER"
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Audit {
+  id     String  @id @default(uuid())
+  userId String?
+  // Back-reference to User; nullable lets you keep audit rows if a user is deleted.
+  user   User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  action   String // SIGN_IN, LINK_GOOGLE, LINK_GITHUB, REFRESH, LOGOUT
+  metaJson Json?
+  at       DateTime @default(now())
+
+  @@index([userId])
 }
