@@ -1,7 +1,9 @@
 version: "3.9"
 services:
   auth:
-    build: .
+    build: 
+      context: ./backend/aurora-auth
+      dockerfile: Dockerfile
     image: aurora-auth:dev
     container_name: aurora-auth
     env_file:
