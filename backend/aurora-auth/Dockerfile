@@ -4,6 +4,8 @@ WORKDIR /app
 RUN apk add --no-cache python3 make g++ openssl
 COPY package*.json ./
 RUN npm ci
+COPY prisma ./prisma
+RUN npx prisma generate --schema=./prisma/schema.prisma
 COPY . .
 RUN npm run build
 
@@ -20,4 +22,4 @@ RUN addgroup -S aurora && adduser -S aurora -G aurora
 USER aurora
 # expose HTTP
 EXPOSE 8080
-CMD ["node", "dist/main.js"]
+CMD ["node", "dist/src/main.js"]
