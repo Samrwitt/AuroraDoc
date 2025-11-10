@@ -14,6 +14,7 @@ RUN apk add --no-cache openssl
 ENV NODE_ENV=production
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
+COPY --from=build /app/prisma ./prisma
 # non-root user
 RUN addgroup -S aurora && adduser -S aurora -G aurora
 USER aurora
